@@ -5,8 +5,8 @@
         <description>廢宅隨筆 - 廢宅</description>
         <link>http://username.github.io</link>
         <atom:link href="http://username.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 17 Apr 2019 14:28:07 +0800</lastBuildDate>
-        <pubDate>Wed, 17 Apr 2019 14:28:07 +0800</pubDate>
+        <lastBuildDate>Wed, 17 Apr 2019 15:29:10 +0800</lastBuildDate>
+        <pubDate>Wed, 17 Apr 2019 15:29:10 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -125,6 +125,9 @@
 &lt;h2 id=&quot;github-blog-參考&quot;&gt;GitHub Blog 參考:&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://ithelp.ithome.com.tw/articles/10198964&quot; target=&quot;_blank&quot;&gt;https://ithelp.ithome.com.tw/articles/10198964&lt;/a&gt;&lt;/p&gt;
 
+&lt;h2 id=&quot;github-blog-使用的jekyll-語言-liquid語法&quot;&gt;GitHub Blog 使用的Jekyll 語言 Liquid語法&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://liquid.bootcss.com/tags/iteration/&quot; target=&quot;_blank&quot;&gt;https://liquid.bootcss.com/tags/iteration/&lt;/a&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;python下載windows&quot;&gt;Python下載(Windows):&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.python.org/getit/&quot; target=&quot;_blank&quot;&gt;https://www.python.org/getit/&lt;/a&gt;&lt;/p&gt;
 
@@ -134,17 +137,17 @@
 &lt;h2 id=&quot;angular參考&quot;&gt;Angular參考:&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&quot;https://ithelp.ithome.com.tw/articles/10203185&quot; target=&quot;_blank&quot;&gt;https://ithelp.ithome.com.tw/articles/10203185&lt;/a&gt;## Angular參考:&lt;/p&gt;
 
-&lt;p&gt;##PHP下載
-&lt;a href=&quot;https://windows.php.net/download/&quot; target=&quot;_blank&quot;&gt;https://windows.php.net/download/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;php下載&quot;&gt;PHP下載&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://windows.php.net/download/&quot; target=&quot;_blank&quot;&gt;https://windows.php.net/download/&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;##APACHE下載
-&lt;a href=&quot;http://httpd.apache.org/download.cgi#apache24&quot;&gt;http://httpd.apache.org/download.cgi#apache24&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;apache下載&quot;&gt;APACHE下載&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://httpd.apache.org/download.cgi#apache24&quot;&gt;http://httpd.apache.org/download.cgi#apache24&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;##MySQL下載
-&lt;a href=&quot;https://dev.mysql.com/downloads/windows/installer/&quot;&gt;https://dev.mysql.com/downloads/windows/installer/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;mysql下載&quot;&gt;MySQL下載&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://dev.mysql.com/downloads/windows/installer/&quot;&gt;https://dev.mysql.com/downloads/windows/installer/&lt;/a&gt;&lt;/p&gt;
 </description>
-                <link>http://username.github.io/jekyll/update/2019/04/10/urllist</link>
-                <guid>http://username.github.io/jekyll/update/2019/04/10/urllist</guid>
+                <link>http://username.github.io/other/2019/04/10/urllist</link>
+                <guid>http://username.github.io/other/2019/04/10/urllist</guid>
                 <pubDate>Wed, 10 Apr 2019 23:29:29 +0800</pubDate>
         </item>
 
