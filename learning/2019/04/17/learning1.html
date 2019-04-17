@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Url Use</title>
+    <title>商城網站學習 - Apache 學習記錄 1</title>
     
     <meta name="author" content="廢宅">
 
@@ -136,44 +136,108 @@
         
 
 <div class="page-header">
-  <h1>Url Use </h1>
+  <h1>商城網站學習 - Apache 學習記錄 1 </h1>
 </div>
 
 <div class="row post-full">
   <div class="col-xs-12">
     <div class="date">
-      <span>10 April 2019</span>
+      <span>17 April 2019</span>
     </div>
     <div class="content">
-      <h2 id="git下載windows">Git下載(Windows):</h2>
-<p><a href="https://gitforwindows.org/" target="_blank">https://gitforwindows.org/</a></p>
+      <p>最近研究如何架設商城網站，
+多方查詢開源套件下，因為WordPress 與 Opencart 使用的人數不少<br />
+選擇使用:</p>
+<ul>
+  <li>
+    <p>作業系統OS WINDOWS10<br />
+    -	學習當下用的是WINDOWS<br />
+    -	如果用Linux只是安裝方式不一樣, 用Docker可以抓別人設定好的 Apache 伺服器 Image 裝</p>
+  </li>
+  <li>
+    <p>伺服器 Apache <br />
+    -	NGINX 也可以 但 WINDOWS 版的要改過某些檔案重新編譯才能跨越連線數的限制<br />
+    -	而 Apache 有很多第三方已經編譯好的檔案可以直接使用</p>
+  </li>
+  <li>
+    <p>DB MySQL  <br />
+    -	Wordpress 與 Opencart 推薦使用</p>
+  </li>
+  <li>
+    <p>網頁與後台 PHP <br />
+    -	因為 Wordpress 與 Opencart 都是用PHP寫的</p>
+  </li>
+</ul>
 
-<h2 id="markdown-語法">MarkDown 語法:</h2>
-<p><a href="https://markdown.tw/" target="_blank">https://markdown.tw/</a></p>
+<p>本篇從Apache開始著手 (學習當下是2.4版)</p>
 
-<h2 id="ruby-下載windows">Ruby 下載(Windows):</h2>
-<p><a href="https://rubyinstaller.org/downloads/" target="_blank">https://rubyinstaller.org/downloads/</a></p>
+<h1 id="apache官網-"><a href="http://httpd.apache.org/download.cgi#apache24" target="_blank">Apache官網</a> <br /></h1>
+<p>現在 Apache 官網不提供編譯好的程式了 <br />
+要找 “a number of third party vendors.”<br />
+<img src="/assets/img/Apache1.png" width="80%" height="auto" /><br />
+<br />
+再從第三方的網站中挑一個 我選了Apache Lounge<br />
+<img src="/assets/img/Apache2.png" width="80%" height="auto" /><br />
+<br />
+依照系統的位元數下載對應的壓縮檔案 我選了64位元<br />
+<img src="/assets/img/Apache3.png" width="80%" height="auto" /><br />
+<br />
+泡個泡麵下載好之後, 解壓縮 我丟在C:/Net/Apache底下<br />
+解出一個Apache24的檔案<br />
+<img src="/assets/img/Apache4.png" width="30%" height="auto" /><br />
+<br />
+再來做些設定<br />
+到Apache24底下conf的資料夾 並打開httpd.conf編輯以下資料:<br /></p>
+<ul>
+  <li><code>Define SRVROOT "c:/Apache24"</code><br />
+    伺服器根目錄<br />
+    改成解壓縮之後Apache24的路徑”c:/Net/Apache/Apache24”</li>
+  <li><code>Listen 80</code><br />
+    監聽的PORT<br />
+    如果有開 IIS的話 記得改成其他的PORT 兩個會互搶監聽導致出問題<br />
+    練習時改成5000了</li>
+  <li><code>#ServerName www.example.com:80</code><br />
+    將#去掉, 把www.example.com改成127.0.0.1<br />
+    後面的PORT改成剛剛<code>Listen 80</code>改的數值<br />
+    用127.0.0.1是本地端的意思, 如果是伺服器有買DOMAIN可以換成DOMAIN</li>
+  <li>
+    <p>找到首頁解析設定</p>
 
-<h2 id="github-blog-參考">GitHub Blog 參考:</h2>
-<p><a href="https://ithelp.ithome.com.tw/articles/10198964" target="_blank">https://ithelp.ithome.com.tw/articles/10198964</a></p>
+    <pre><code>&lt;IfModule dir_module&gt;
+    DirectoryIndex index.html
+&lt;/IfModule&gt;
+</code></pre>
 
-<h2 id="python下載windows">Python下載(Windows):</h2>
-<p><a href="https://www.python.org/getit/" target="_blank">https://www.python.org/getit/</a></p>
+    <p>改成<br /></p>
 
-<h2 id="python參考">Python參考:</h2>
-<p><a href="https://ithelp.ithome.com.tw/articles/10202210" target="_blank">https://ithelp.ithome.com.tw/articles/10202210</a></p>
+    <pre><code>&lt;IfModule dir_module&gt;
+    DirectoryIndex index.html index.php
+&lt;/IfModule&gt;
+</code></pre>
+  </li>
+</ul>
 
-<h2 id="angular參考">Angular參考:</h2>
-<p><a href="https://ithelp.ithome.com.tw/articles/10203185" target="_blank">https://ithelp.ithome.com.tw/articles/10203185</a>## Angular參考:</p>
+<p>基本設定完成後, 打開終端機, <br />
+終端機在windows開始列的搜尋輸入cmd<br />
+<img src="/assets/img/Apache5.png" width="30%" height="auto" /><br />
+<br />
+一直輸入<code>cd ..</code> 移動目錄到C:\底下<br />
+<img src="/assets/img/Apache6.png" width="50%" height="auto" /><br />
+<br />
+輸入Apache解壓縮路徑<code>cd Net\Apache\Apache24</code><br />
+<img src="/assets/img/Apache7.png" width="50%" height="auto" /><br />
+<br />
+輸入 <code>cd bin</code> 轉到Apache執行檔所在路徑<br />
+在執行檔路徑下輸入 <code>httpd</code> 就會啟動Apache伺服器監聽<br />
+如果跳出防火牆詢問記得同意<br /></p>
 
-<p>##PHP下載
-<a href="https://windows.php.net/download/" target="_blank">https://windows.php.net/download/</a></p>
+<p>再來打開CHROME輸入127.0.0.1:5000 如果看到 It works!<br />
+就代表設定完成了<br />
+<img src="/assets/img/Apache8.png" width="30%" height="auto" /><br />
+<br /></p>
 
-<p>##APACHE下載
-<a href="http://httpd.apache.org/download.cgi#apache24">http://httpd.apache.org/download.cgi#apache24</a></p>
+<p>下一篇沒意外是PHP篇, 只是下次更新不知何年何月了~</p>
 
-<p>##MySQL下載
-<a href="https://dev.mysql.com/downloads/windows/installer/">https://dev.mysql.com/downloads/windows/installer/</a></p>
 
     </div>
 
@@ -186,12 +250,8 @@
 
   
      
-    	<li><a href="/categories.html#jekyll-ref">
-    		jekyll <span>1</span>
-    	</a></li>
-     
-    	<li><a href="/categories.html#update-ref">
-    		update <span>1</span>
+    	<li><a href="/categories.html#learning-ref">
+    		learning <span>1</span>
     	</a></li>
     
   
@@ -205,11 +265,11 @@
     <hr>
     <ul class="pagination">
     
-      <li class="prev"><a href="/lessons/2011/12/29/jekyll-introduction" title="Jekyll Introduction">&laquo; Previous</a></li>
+      <li class="prev"><a href="/jekyll/update/2019/04/10/urllist" title="Url Use">&laquo; Previous</a></li>
     
       <li><a href="/archive.html">Archive</a></li>
     
-      <li class="next"><a href="/learning/2019/04/17/learning1" title="商城網站學習 - Apache 學習記錄 1">Next &raquo;</a></li>
+      <li class="next disabled"><a>Next &rarr;</a>
     
     </ul>
     <hr>
