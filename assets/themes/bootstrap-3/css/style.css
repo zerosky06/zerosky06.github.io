@@ -13,6 +13,25 @@
 /*.navbar .nav {
   float: right; }*/
 
+.navbar-brand{
+	color:#999999;
+}
+
+.navbar-brand:hover{
+	color:#ffffff
+}    
+
+.navbar .nav a{
+	color:#999999
+}
+
+.navbar .nav a:hover{
+	background-color:#ffffff; 
+	color:#333333
+}
+
+
+
 /* Jekyll Bootstrap Colors */
 h1, h2, h3, h4 {
   color: #f22430;
@@ -71,9 +90,18 @@ h1, h2, h3, h4 {
   font-size: 0.8em; }
 
 .tag_box a:hover {
-  background-color: #e5e5e5; }
+  background-color: #e5e5e5; 
+ }
 
 .tag_box a.active {
   background: #57A957;
   border: 1px solid #4c964d;
   color: #FFF; }
+  
+    
+.navbar-dark .navbar-nav > .active > a,
+.navbar-dark .navbar-nav > .active> a:hover,
+.navbar-dark .navbar-nav > .active> a:focus { 
+	color:#000000;
+	background-color:rgb(255,255,255);
+}

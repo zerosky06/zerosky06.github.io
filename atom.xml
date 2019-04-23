@@ -4,7 +4,7 @@
  <title>廢宅隨筆</title>
  <link href="http://username.github.io/atom.xml" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2019-04-23T12:10:09+08:00</updated>
+ <updated>2019-04-23T15:40:15+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>廢宅</name>
@@ -50,7 +50,7 @@ Apache安裝路徑為&lt;code&gt;C:\Net\Apache&lt;/code&gt;&lt;br /&gt;
 丟到Apache的預設網頁路徑 &lt;code&gt;c:\Net\Apache\Apache24\htdocs&lt;/code&gt; 底下&lt;br /&gt;
 &lt;img src=&quot;/assets/img/learning3_1.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
 &lt;br /&gt;
-並且把 &lt;code&gt;index.html&lt;/code&gt; 刪除&lt;br /&gt;&lt;/p&gt;
+並且把 該路徑嚇的 &lt;code&gt;index.html&lt;/code&gt; 刪除&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;打開終端機,切換路徑到Apache安裝路徑&lt;code&gt;c:\Net\Apache\Apache24&lt;/code&gt;底下&lt;br /&gt;
 找到&lt;code&gt;bin&lt;/code&gt;資料夾 然後輸入httpd啟動Apache&lt;br /&gt;
@@ -59,8 +59,9 @@ Apache安裝路徑為&lt;code&gt;C:\Net\Apache&lt;/code&gt;&lt;br /&gt;
 接著打開Chrome, 輸入127.0.0.1:5000&lt;br /&gt;
 如果看到Hello World, 就是成功了&lt;br /&gt;
 &lt;img src=&quot;/assets/img/learning3_3.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
+&lt;br /&gt;
+下一篇 考慮要先記錄PHP語法還是直接WORDPRESS&lt;br /&gt;
+可能會穿差MONGO DB或是ADB指令等等其他東西吧&lt;br /&gt;&lt;/p&gt;
 </content>
  </entry>
  

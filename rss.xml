@@ -5,8 +5,8 @@
         <description>廢宅隨筆 - 廢宅</description>
         <link>http://username.github.io</link>
         <atom:link href="http://username.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Tue, 23 Apr 2019 12:10:09 +0800</lastBuildDate>
-        <pubDate>Tue, 23 Apr 2019 12:10:09 +0800</pubDate>
+        <lastBuildDate>Tue, 23 Apr 2019 15:40:15 +0800</lastBuildDate>
+        <pubDate>Tue, 23 Apr 2019 15:40:15 +0800</pubDate>
         <ttl>60</ttl>
 
 
@@ -45,7 +45,7 @@ Apache安裝路徑為&lt;code&gt;C:\Net\Apache&lt;/code&gt;&lt;br /&gt;
 丟到Apache的預設網頁路徑 &lt;code&gt;c:\Net\Apache\Apache24\htdocs&lt;/code&gt; 底下&lt;br /&gt;
 &lt;img src=&quot;/assets/img/learning3_1.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
 &lt;br /&gt;
-並且把 &lt;code&gt;index.html&lt;/code&gt; 刪除&lt;br /&gt;&lt;/p&gt;
+並且把 該路徑嚇的 &lt;code&gt;index.html&lt;/code&gt; 刪除&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;打開終端機,切換路徑到Apache安裝路徑&lt;code&gt;c:\Net\Apache\Apache24&lt;/code&gt;底下&lt;br /&gt;
 找到&lt;code&gt;bin&lt;/code&gt;資料夾 然後輸入httpd啟動Apache&lt;br /&gt;
@@ -54,8 +54,9 @@ Apache安裝路徑為&lt;code&gt;C:\Net\Apache&lt;/code&gt;&lt;br /&gt;
 接著打開Chrome, 輸入127.0.0.1:5000&lt;br /&gt;
 如果看到Hello World, 就是成功了&lt;br /&gt;
 &lt;img src=&quot;/assets/img/learning3_3.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
+&lt;br /&gt;
+下一篇 考慮要先記錄PHP語法還是直接WORDPRESS&lt;br /&gt;
+可能會穿差MONGO DB或是ADB指令等等其他東西吧&lt;br /&gt;&lt;/p&gt;
 </description>
                 <link>http://username.github.io/learning/2019/04/23/learning3</link>
                 <guid>http://username.github.io/learning/2019/04/23/learning3</guid>
