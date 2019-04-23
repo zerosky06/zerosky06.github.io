@@ -4,7 +4,7 @@
  <title>廢宅隨筆</title>
  <link href="http://username.github.io/atom.xml" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2019-04-23T10:22:59+08:00</updated>
+ <updated>2019-04-23T10:28:06+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>廢宅</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>商城網站學習 - PHP 學習記錄 1</title>
-   <link href="http://username.github.io/learning/2019/04/19/learning2"/>
-   <updated>2019-04-19T10:00:00+08:00</updated>
-   <id>http://username.github.io/learning/2019/04/19/learning2</id>
+   <link href="http://username.github.io/learning/2019/04/23/learning2"/>
+   <updated>2019-04-23T10:00:00+08:00</updated>
+   <id>http://username.github.io/learning/2019/04/23/learning2</id>
    <content type="html">&lt;p&gt;續上一篇&lt;br /&gt;
 &lt;a href=&quot;/learning/2019/04/17/learning1.html&quot;&gt;商城網站學習 - Apache 學習記錄 1&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
 
