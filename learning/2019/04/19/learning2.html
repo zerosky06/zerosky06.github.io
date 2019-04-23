@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Url Use</title>
+    <title>商城網站學習 - PHP 學習記錄 1</title>
     
     <meta name="author" content="廢宅">
 
@@ -136,44 +136,97 @@
         
 
 <div class="page-header">
-  <h1>Url Use </h1>
+  <h1>商城網站學習 - PHP 學習記錄 1 </h1>
 </div>
 
 <div class="row post-full">
   <div class="col-xs-12">
     <div class="date">
-      <span>10 April 2019</span>
+      <span>19 April 2019</span>
     </div>
     <div class="content">
-      <h2 id="git下載windows">Git下載(Windows):</h2>
-<p><a href="https://gitforwindows.org/" target="_blank">https://gitforwindows.org/</a></p>
+      <p>續上一篇<br />
+<a href="/learning/2019/04/17/learning1.html">商城網站學習 - Apache 學習記錄 1</a><br /></p>
 
-<h2 id="markdown-語法">MarkDown 語法:</h2>
-<p><a href="https://markdown.tw/" target="_blank">https://markdown.tw/</a></p>
+<p>本篇換PHP安裝設定記錄 (學習時版本是7.3)<br />
+首先先到<br /></p>
+<h1 id="php官網"><a href="https://www.php.net/downloads.php" target="_blank">PHP官網</a><br /></h1>
+<p>因為用的是WINDOWS版先選擇Windows Downloads
+<img src="/assets/img/PHP1.png" width="80%" height="auto" /><br />
+<br />
+再來選擇對應位元的壓縮包下載<br />
+<img src="/assets/img/PHP2.png" width="80%" height="auto" /><br />
+<br />
+此時會發現有 Non-Thread-Safe 跟 Thread-Safe 兩種<br />
+兩者的差別簡單來講在於<br /></p>
+<ul>
+  <li>Non-Thread-Safe 沒有檢查線程安全, <br />
+有新的網路請求(Request)或是任何處理就會開新的線程,浪費資源甚至導致資源耗盡</li>
+  <li>Thread-Safe 會檢查線程安全<br />
+跟非線程安全的差別就是每次動作都會檢查線程安全,不容易造成資源浪費</li>
+</ul>
 
-<h2 id="ruby-下載windows">Ruby 下載(Windows):</h2>
-<p><a href="https://rubyinstaller.org/downloads/" target="_blank">https://rubyinstaller.org/downloads/</a></p>
+<p>這樣看起來似乎選線程安全比較好,其實不對<br />
+選擇的伺服器與PHP交流方式可能只會有單線程在執行<br />
+此時選非線程安全的反而可以提高執行效率<br />
+因為PHP在設計時,為了與外界交流數據,提供了交流介面( Interface ) SAPI ( Server Application Programming Interface )<br />
+而SAPI會依照交流方式不同而不同, 例如:</p>
 
-<h2 id="github-blog-參考">GitHub Blog 參考:</h2>
-<p><a href="https://ithelp.ithome.com.tw/articles/10198964" target="_blank">https://ithelp.ithome.com.tw/articles/10198964</a></p>
+<ul>
+  <li>Apache, Nginx, IIS7 使用的 FastCGI</li>
+  <li>IIS專用的 ISAPI</li>
+  <li>終端機用的 CLI ( Command Line Interface )</li>
+</ul>
 
-<h2 id="python下載windows">Python下載(Windows):</h2>
-<p><a href="https://www.python.org/getit/" target="_blank">https://www.python.org/getit/</a></p>
+<p>其中FastCGI只會用單線程執行動作<br />
+本篇搭配Apache使用所以選擇了Non-Thread-Safe 64位元的 下載<br />
+泡麵泡下去 耐心等待下載完成<br />
+下載後解壓縮 練習時是解到C:\Net\PHP底下<br />
+<br />
+再來做些設定<br />
+進入解壓縮路徑C:\Net\PHP下找到 php.ini 的檔案<br />
+什麼!! 找不到!! 一定是打開的姿勢不對(X) <br />
+其實新版預設將 php.ini 分成 php.ini-developerment 跟 php.ini-production 兩個檔案<br />
+<img src="/assets/img/PHP3.png" width="50%" height="auto" /><br />
+<br />
+兩者的差別在於會不會印錯誤訊息<br />
+如果要開放給別人使用, 就要用production的版本,才不會錯誤訊息被看光光喔<br />
+因為是練習就選了developerment的版本<br />
+將檔案複製一份 (以防改錯改不回來) 改檔案名,去掉developerment<br />
+<img src="/assets/img/PHP4.png" width="50%" height="auto" /><br />
+<br />
+再來用編輯器打開 php.ini 修改以下設定:<br /></p>
+<ul>
+  <li><code>;extension_dir = "ext"</code> <br />
+    擴充功能的資料夾路徑,這個主要在增加常用功能時會用到<br />
+    例如:發送網路請求的cURL, 圖像解析的CG2之類的<br />
+    將 ; 去掉改成<code>extension_dir = "C:\Net\PHP\ext"</code></li>
+  <li>找到有一整排 <code>extension=</code> 的地方<br />
+    開啟擴充功能的地方, 新增<br />
+    <code>extension = php_mysqli.dll</code><br />
+    因為資料庫選擇MySQL所以要啟動MySQL的指令擴充<br />
+    <br />
+    <code>extension = php_openssl.dll</code><br />
+    安全傳輸協定 https使用<br />
+    <br />
+    <code>extension = php_curl.dll</code><br />
+    網路請求<br />
+    <br />
+    <code>extension = php_gd2.dll</code><br />
+    圖像解析<br />
+    <br />
+到此基本設定完成,<br />
+再來打開終端機, 不知道怎麼開? 請參考前一篇<a href="/learning/2019/04/17/learning1.html">商城網站學習 - Apache 學習記錄 1</a><br />
+先利用<code>cd ..</code>切到C:/底下
+輸入<code>cd Net\PHP</code> 移動到PHP資料夾下<br />
+<img src="/assets/img/PHP5.png" width="50%" height="auto" /><br />
+<br />
+然後輸入<code>php -v</code> 如果出現以下文字並且弄好上面的設定就是完成了<br />
+<img src="/assets/img/PHP6.png" width="50%" height="auto" /><br />
+<br />
+下一篇沒意外是 PHP x Apache x Hello World 如果懶癌還沒發作的話就會更新了吧</li>
+</ul>
 
-<h2 id="python參考">Python參考:</h2>
-<p><a href="https://ithelp.ithome.com.tw/articles/10202210" target="_blank">https://ithelp.ithome.com.tw/articles/10202210</a></p>
-
-<h2 id="angular參考">Angular參考:</h2>
-<p><a href="https://ithelp.ithome.com.tw/articles/10203185" target="_blank">https://ithelp.ithome.com.tw/articles/10203185</a>## Angular參考:</p>
-
-<p>##PHP下載
-<a href="https://windows.php.net/download/" target="_blank">https://windows.php.net/download/</a></p>
-
-<p>##APACHE下載
-<a href="http://httpd.apache.org/download.cgi#apache24">http://httpd.apache.org/download.cgi#apache24</a></p>
-
-<p>##MySQL下載
-<a href="https://dev.mysql.com/downloads/windows/installer/">https://dev.mysql.com/downloads/windows/installer/</a></p>
 
     </div>
 
@@ -186,12 +239,8 @@
 
   
      
-    	<li><a href="/categories.html#jekyll-ref">
-    		jekyll <span>1</span>
-    	</a></li>
-     
-    	<li><a href="/categories.html#update-ref">
-    		update <span>1</span>
+    	<li><a href="/categories.html#learning-ref">
+    		learning <span>2</span>
     	</a></li>
     
   
@@ -205,11 +254,11 @@
     <hr>
     <ul class="pagination">
     
-      <li class="prev"><a href="/lessons/2011/12/29/jekyll-introduction" title="Jekyll Introduction">&laquo; Previous</a></li>
+      <li class="prev"><a href="/learning/2019/04/17/learning1" title="商城網站學習 - Apache 學習記錄 1">&laquo; Previous</a></li>
     
       <li><a href="/archive.html">Archive</a></li>
     
-      <li class="next"><a href="/learning/2019/04/17/learning1" title="商城網站學習 - Apache 學習記錄 1">Next &raquo;</a></li>
+      <li class="next disabled"><a>Next &rarr;</a>
     
     </ul>
     <hr>

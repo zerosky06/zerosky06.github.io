@@ -5,10 +5,100 @@
         <description>廢宅隨筆 - 廢宅</description>
         <link>http://username.github.io</link>
         <atom:link href="http://username.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Wed, 17 Apr 2019 15:29:10 +0800</lastBuildDate>
-        <pubDate>Wed, 17 Apr 2019 15:29:10 +0800</pubDate>
+        <lastBuildDate>Tue, 23 Apr 2019 10:22:59 +0800</lastBuildDate>
+        <pubDate>Tue, 23 Apr 2019 10:22:59 +0800</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>商城網站學習 - PHP 學習記錄 1</title>
+                <description>&lt;p&gt;續上一篇&lt;br /&gt;
+&lt;a href=&quot;/learning/2019/04/17/learning1.html&quot;&gt;商城網站學習 - Apache 學習記錄 1&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;本篇換PHP安裝設定記錄 (學習時版本是7.3)&lt;br /&gt;
+首先先到&lt;br /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;php官網&quot;&gt;&lt;a href=&quot;https://www.php.net/downloads.php&quot; target=&quot;_blank&quot;&gt;PHP官網&lt;/a&gt;&lt;br /&gt;&lt;/h1&gt;
+&lt;p&gt;因為用的是WINDOWS版先選擇Windows Downloads
+&lt;img src=&quot;/assets/img/PHP1.png&quot; width=&quot;80%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+再來選擇對應位元的壓縮包下載&lt;br /&gt;
+&lt;img src=&quot;/assets/img/PHP2.png&quot; width=&quot;80%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+此時會發現有 Non-Thread-Safe 跟 Thread-Safe 兩種&lt;br /&gt;
+兩者的差別簡單來講在於&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Non-Thread-Safe 沒有檢查線程安全, &lt;br /&gt;
+有新的網路請求(Request)或是任何處理就會開新的線程,浪費資源甚至導致資源耗盡&lt;/li&gt;
+  &lt;li&gt;Thread-Safe 會檢查線程安全&lt;br /&gt;
+跟非線程安全的差別就是每次動作都會檢查線程安全,不容易造成資源浪費&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這樣看起來似乎選線程安全比較好,其實不對&lt;br /&gt;
+選擇的伺服器與PHP交流方式可能只會有單線程在執行&lt;br /&gt;
+此時選非線程安全的反而可以提高執行效率&lt;br /&gt;
+因為PHP在設計時,為了與外界交流數據,提供了交流介面( Interface ) SAPI ( Server Application Programming Interface )&lt;br /&gt;
+而SAPI會依照交流方式不同而不同, 例如:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Apache, Nginx, IIS7 使用的 FastCGI&lt;/li&gt;
+  &lt;li&gt;IIS專用的 ISAPI&lt;/li&gt;
+  &lt;li&gt;終端機用的 CLI ( Command Line Interface )&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其中FastCGI只會用單線程執行動作&lt;br /&gt;
+本篇搭配Apache使用所以選擇了Non-Thread-Safe 64位元的 下載&lt;br /&gt;
+泡麵泡下去 耐心等待下載完成&lt;br /&gt;
+下載後解壓縮 練習時是解到C:\Net\PHP底下&lt;br /&gt;
+&lt;br /&gt;
+再來做些設定&lt;br /&gt;
+進入解壓縮路徑C:\Net\PHP下找到 php.ini 的檔案&lt;br /&gt;
+什麼!! 找不到!! 一定是打開的姿勢不對(X) &lt;br /&gt;
+其實新版預設將 php.ini 分成 php.ini-developerment 跟 php.ini-production 兩個檔案&lt;br /&gt;
+&lt;img src=&quot;/assets/img/PHP3.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+兩者的差別在於會不會印錯誤訊息&lt;br /&gt;
+如果要開放給別人使用, 就要用production的版本,才不會錯誤訊息被看光光喔&lt;br /&gt;
+因為是練習就選了developerment的版本&lt;br /&gt;
+將檔案複製一份 (以防改錯改不回來) 改檔案名,去掉developerment&lt;br /&gt;
+&lt;img src=&quot;/assets/img/PHP4.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+再來用編輯器打開 php.ini 修改以下設定:&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;;extension_dir = &quot;ext&quot;&lt;/code&gt; &lt;br /&gt;
+    擴充功能的資料夾路徑,這個主要在增加常用功能時會用到&lt;br /&gt;
+    例如:發送網路請求的cURL, 圖像解析的CG2之類的&lt;br /&gt;
+    將 ; 去掉改成&lt;code&gt;extension_dir = &quot;C:\Net\PHP\ext&quot;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;找到有一整排 &lt;code&gt;extension=&lt;/code&gt; 的地方&lt;br /&gt;
+    開啟擴充功能的地方, 新增&lt;br /&gt;
+    &lt;code&gt;extension = php_mysqli.dll&lt;/code&gt;&lt;br /&gt;
+    因為資料庫選擇MySQL所以要啟動MySQL的指令擴充&lt;br /&gt;
+    &lt;br /&gt;
+    &lt;code&gt;extension = php_openssl.dll&lt;/code&gt;&lt;br /&gt;
+    安全傳輸協定 https使用&lt;br /&gt;
+    &lt;br /&gt;
+    &lt;code&gt;extension = php_curl.dll&lt;/code&gt;&lt;br /&gt;
+    網路請求&lt;br /&gt;
+    &lt;br /&gt;
+    &lt;code&gt;extension = php_gd2.dll&lt;/code&gt;&lt;br /&gt;
+    圖像解析&lt;br /&gt;
+    &lt;br /&gt;
+到此基本設定完成,&lt;br /&gt;
+再來打開終端機, 不知道怎麼開? 請參考前一篇&lt;a href=&quot;/learning/2019/04/17/learning1.html&quot;&gt;商城網站學習 - Apache 學習記錄 1&lt;/a&gt;&lt;br /&gt;
+先利用&lt;code&gt;cd ..&lt;/code&gt;切到C:/底下
+輸入&lt;code&gt;cd Net\PHP&lt;/code&gt; 移動到PHP資料夾下&lt;br /&gt;
+&lt;img src=&quot;/assets/img/PHP5.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+然後輸入&lt;code&gt;php -v&lt;/code&gt; 如果出現以下文字並且弄好上面的設定就是完成了&lt;br /&gt;
+&lt;img src=&quot;/assets/img/PHP6.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+下一篇沒意外是 PHP x Apache x Hello World 如果懶癌還沒發作的話就會更新了吧&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+                <link>http://username.github.io/learning/2019/04/19/learning2</link>
+                <guid>http://username.github.io/learning/2019/04/19/learning2</guid>
+                <pubDate>Fri, 19 Apr 2019 10:00:00 +0800</pubDate>
+        </item>
 
         <item>
                 <title>商城網站學習 - Apache 學習記錄 1</title>
