@@ -179,8 +179,11 @@
 </ul>
 
 <p>其中FastCGI只會用單線程執行動作<br />
-本篇搭配Apache使用所以選擇了Non-Thread-Safe 64位元的 下載<br />
+本篇搭配Apache使用所以打算選擇Non-Thread-Safe 64位元的 下載<br />
 泡麵泡下去 耐心等待下載完成<br />
+而後發現Non-Thread-Safe 的PHP少了關鍵的dll檔案<br />
+不能跟Apache做整合, 又改下Thread-Safe的版本<br />
+<del>根本耍人</del><br />
 下載後解壓縮 練習時是解到C:\Net\PHP底下<br />
 <br />
 再來做些設定<br />
@@ -240,7 +243,7 @@
   
      
     	<li><a href="/categories.html#learning-ref">
-    		learning <span>2</span>
+    		learning <span>3</span>
     	</a></li>
     
   
@@ -258,7 +261,7 @@
     
       <li><a href="/archive.html">Archive</a></li>
     
-      <li class="next disabled"><a>Next &rarr;</a>
+      <li class="next"><a href="/learning/2019/04/23/learning3" title="商城網站學習 - Apache x PHP x Hello World">Next &raquo;</a></li>
     
     </ul>
     <hr>

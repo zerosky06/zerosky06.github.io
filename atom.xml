@@ -4,13 +4,65 @@
  <title>廢宅隨筆</title>
  <link href="http://username.github.io/atom.xml" rel="self"/>
  <link href="http://username.github.io"/>
- <updated>2019-04-23T10:28:06+08:00</updated>
+ <updated>2019-04-23T12:10:09+08:00</updated>
  <id>http://username.github.io</id>
  <author>
    <name>廢宅</name>
    <email>zerosky06@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>商城網站學習 - Apache x PHP x Hello World</title>
+   <link href="http://username.github.io/learning/2019/04/23/learning3"/>
+   <updated>2019-04-23T10:00:00+08:00</updated>
+   <id>http://username.github.io/learning/2019/04/23/learning3</id>
+   <content type="html">&lt;p&gt;接續上一篇&lt;br /&gt;
+&lt;a href=&quot;/learning/2019/04/23/learning2.html&quot;&gt;商城網站學習 - PHP 學習記錄 1&lt;/a&gt;&lt;br /&gt;
+接著學習PHP與Apache的整合&lt;br /&gt;
+一開始預設的Apache不知道PHP的位置&lt;br /&gt;
+也沒辦法使用 PHP提供的 SAPI 跟解析PHP&lt;br /&gt;
+所以要先在Apache的設定檔中告知PHP的路徑跟初始化位置&lt;br /&gt;
+續&lt;a href=&quot;/learning/2019/04/17/learning1.html&quot;&gt;商城網站學習 - Apache 學習記錄 1&lt;/a&gt;&lt;br /&gt;
+Apache安裝路徑為&lt;code&gt;C:\Net\Apache&lt;/code&gt;&lt;br /&gt;
+找到&lt;code&gt;conf&lt;/code&gt;的資料夾打開裡面名為&lt;code&gt;httpd.conf&lt;/code&gt;的檔案&lt;br /&gt;
+找到一排&lt;code&gt;LoadModule&lt;/code&gt;的地方新增以下資料:&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;LoadModule php7_module &quot;c:/Net/PHP/php7apache2_4.dll&quot;&lt;/code&gt;&lt;br /&gt;
+    加入PHP的module, WINDOW預設的\不能用, 要用/&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;AddHandler php7-script .php&lt;/code&gt;&lt;br /&gt;
+    加入script附檔名為.php的, 注意 .php 前面有空一格&lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;PHPIniDir &quot;c:/Net/PHP/&quot;&lt;/code&gt;&lt;br /&gt;
+    PHP初始化的位置&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;寫一個PHP的網頁試試看
+隨便開一個.txt文字檔案&lt;br /&gt;
+輸入:&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+    echo('Hello World');
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;儲存後改名成 index.php&lt;br /&gt;
+丟到Apache的預設網頁路徑 &lt;code&gt;c:\Net\Apache\Apache24\htdocs&lt;/code&gt; 底下&lt;br /&gt;
+&lt;img src=&quot;/assets/img/learning3_1.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+並且把 &lt;code&gt;index.html&lt;/code&gt; 刪除&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;打開終端機,切換路徑到Apache安裝路徑&lt;code&gt;c:\Net\Apache\Apache24&lt;/code&gt;底下&lt;br /&gt;
+找到&lt;code&gt;bin&lt;/code&gt;資料夾 然後輸入httpd啟動Apache&lt;br /&gt;
+&lt;img src=&quot;/assets/img/learning3_2.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+接著打開Chrome, 輸入127.0.0.1:5000&lt;br /&gt;
+如果看到Hello World, 就是成功了&lt;br /&gt;
+&lt;img src=&quot;/assets/img/learning3_3.png&quot; width=&quot;50%&quot; height=&quot;auto&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>商城網站學習 - PHP 學習記錄 1</title>
@@ -51,8 +103,11 @@
 &lt;/ul&gt;
 
 &lt;p&gt;其中FastCGI只會用單線程執行動作&lt;br /&gt;
-本篇搭配Apache使用所以選擇了Non-Thread-Safe 64位元的 下載&lt;br /&gt;
+本篇搭配Apache使用所以打算選擇Non-Thread-Safe 64位元的 下載&lt;br /&gt;
 泡麵泡下去 耐心等待下載完成&lt;br /&gt;
+而後發現Non-Thread-Safe 的PHP少了關鍵的dll檔案&lt;br /&gt;
+不能跟Apache做整合, 又改下Thread-Safe的版本&lt;br /&gt;
+&lt;del&gt;根本耍人&lt;/del&gt;&lt;br /&gt;
 下載後解壓縮 練習時是解到C:\Net\PHP底下&lt;br /&gt;
 &lt;br /&gt;
 再來做些設定&lt;br /&gt;
