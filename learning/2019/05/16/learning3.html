@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>商城網站學習 - Apache x PHP x Hello World</title>
+    
+    <meta name="author" content="廢宅">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div id="wrap">
+      <nav class="navbar navbar-dark" role="navigation" style="background-color: #333333;">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">廢宅隨筆</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li> <a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li> <a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li> <a href="/pages">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li> <a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+          <!-- <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>-->
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>商城網站學習 - Apache x PHP x Hello World </h1>
+</div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>16 May 2019</span>
+    </div>
+    <div class="content">
+      <p>接續上一篇<br />
+<a href="/learning/2019/04/23/learning2.html">商城網站學習 - PHP 學習記錄 1</a><br />
+接著學習PHP與Apache的整合<br />
+一開始預設的Apache不知道PHP的位置<br />
+也沒辦法使用 PHP提供的 SAPI 跟解析PHP<br />
+所以要先在Apache的設定檔中告知PHP的路徑跟初始化位置<br />
+續<a href="/learning/2019/04/17/learning1.html">商城網站學習 - Apache 學習記錄 1</a><br />
+Apache安裝路徑為<code>C:\Net\Apache</code><br />
+找到<code>conf</code>的資料夾打開裡面名為<code>httpd.conf</code>的檔案<br />
+找到一排<code>LoadModule</code>的地方新增以下資料:<br /></p>
+<ul>
+  <li><code>LoadModule php7_module "c:/Net/PHP/php7apache2_4.dll"</code><br />
+    加入PHP的module, WINDOW預設的\不能用, 要用/<br /></li>
+  <li><code>AddHandler php7-script .php</code><br />
+    加入script附檔名為.php的, 注意 .php 前面有空一格<br /></li>
+  <li><code>PHPIniDir "c:/Net/PHP/"</code><br />
+    PHP初始化的位置<br />
+<br /></li>
+</ul>
+
+<p>寫一個PHP的網頁試試看
+隨便開一個.txt文字檔案<br />
+輸入:<br /></p>
+
+<pre><code>&lt;?php
+    echo('Hello World');
+?&gt;
+</code></pre>
+
+<p>儲存後改名成 index.php<br />
+丟到Apache的預設網頁路徑 <code>c:\Net\Apache\Apache24\htdocs</code> 底下<br />
+<img src="/assets/img/learning3_1.png" width="50%" height="auto" /><br />
+<br />
+並且把 該路徑嚇的 <code>index.html</code> 刪除<br /></p>
+
+<p>打開終端機,切換路徑到Apache安裝路徑<code>c:\Net\Apache\Apache24</code>底下<br />
+找到<code>bin</code>資料夾 然後輸入httpd啟動Apache<br />
+<img src="/assets/img/learning3_2.png" width="50%" height="auto" /><br />
+<br />
+接著打開Chrome, 輸入127.0.0.1:5000<br />
+如果看到Hello World, 就是成功了<br />
+<img src="/assets/img/learning3_3.png" width="50%" height="auto" /><br />
+<br />
+下一篇 存取資料的MYSQL<br />
+可能會穿差其他程式的東西吧<br /></p>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#learning-ref">
+    		learning <span>3</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/learning/2019/04/23/learning2" title="商城網站學習 - PHP 學習記錄 1">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next disabled"><a>Next &rarr;</a>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2019 廢宅
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
+        </p>
+      </div>
+    </div>
+
+    
+
+
+
+
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
